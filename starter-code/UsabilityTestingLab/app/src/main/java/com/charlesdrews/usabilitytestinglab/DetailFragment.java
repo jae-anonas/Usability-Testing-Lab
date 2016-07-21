@@ -2,6 +2,7 @@ package com.charlesdrews.usabilitytestinglab;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.webkit.WebViewClient;
 public class DetailFragment extends Fragment {
     //the full URL will be this beginning part + the selected zodiac sign String at the end
     private static final String URL_BEGINNING ="http://www.horoscopedates.com/zodiac-signs/";
+    private static String sign;
 
     private WebView mWebView;
 
@@ -37,8 +39,20 @@ public class DetailFragment extends Fragment {
     public static DetailFragment newInstance(Bundle arguments) {
         DetailFragment fragment = new DetailFragment();
         fragment.setArguments(arguments);
+        sign = arguments.getString(DetailActivity.SIGN_KEY);
         return fragment;
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +63,14 @@ public class DetailFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWebView(sign);
+    }
+
     public void updateWebView(String selectedSign) {
         //TODO - look up how to load a URL in a webview
+        mWebView.loadUrl(URL_BEGINNING + selectedSign);
     }
 }

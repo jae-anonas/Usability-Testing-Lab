@@ -2,6 +2,8 @@
     <string name="app_name">UsabilityTestingLab</string>
 
     <string-array name="signs">
+        <item>aquarius</item>
+        <item>pisces</item>
         <item>aries</item>
         <item>taurus</item>
         <item>gemini</item>
@@ -12,7 +14,5 @@
         <item>scorpio</item>
         <item>sagittarius</item>
         <item>capricorn</item>
-        <item>aquarius</item>
-        <item>pisces</item>
     </string-array>
 </resources>
